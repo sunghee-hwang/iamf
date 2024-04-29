@@ -26,16 +26,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Run bikeshed
-        run: |
-          bikeshed spec
-          mkdir dist
-          cp *.html dist
-          cp -r v?.?.?_images dist
-          cp -r v?.?.?-errata_images dist
-          cp -r images dist
-          
+       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
