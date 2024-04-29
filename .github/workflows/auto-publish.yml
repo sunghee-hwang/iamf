@@ -27,6 +27,7 @@ jobs:
           SOURCE: index.bs
           DESTINATION: index.html
           VALIDATE_MARKUP: false
+      - run: pip install bikeshed
       
       - name: Set up Node.js
         uses: actions/setup-node@v4
