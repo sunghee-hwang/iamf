@@ -26,9 +26,6 @@ jobs:
           cache: 'pip'
       - run: pip install bikeshed
 
-      - name: Install Poetry
-        uses: abatilo/actions-poetry@v3
-
       - name: Setup a local virtual environment
         run: |
           poetry config virtualenvs.create true --local
