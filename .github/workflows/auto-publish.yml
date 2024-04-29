@@ -21,9 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: 3.11
-          cache: 'pip'
       - run: pip install bikeshed
       
       - name: Set up Node.js
@@ -46,5 +43,11 @@ jobs:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        id: deployment 
+        uses: w3c/spec-prod@v2
+        with:
+          GH_PAGES_BRANCH: main
+          TOOLCHAIN: bikeshed
+          SOURCE: index.bs
+          DESTINATION: index.html
+          VALIDATE_MARKUP: false
