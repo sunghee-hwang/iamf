@@ -2,34 +2,13 @@ name: Auto-Publish
 on:
   push:
     branches: [main]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   main:
-    name: Compile and deploy
+    name: Deploy to GitHub pages
     runs-on: ubuntu-20.04
-
     steps:
       - uses: actions/checkout@v2
-      - run: pip install bikeshed
-      
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20    
-
-      - name: Deploy to GitHub Pages
-        id: deployment 
-        uses: w3c/spec-prod@v2
+      - uses: w3c/spec-prod@v2
         with:
           GH_PAGES_BRANCH: main
           TOOLCHAIN: bikeshed
